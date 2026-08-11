@@ -1,0 +1,29 @@
+baseURL = "https://notsoujanya.github.io/"
+locale = "en-US"
+title = "notsoujanya"
+theme = "PaperMod"
+
+[params]
+  description = "writing about things that interest me in technology, science and other miscellaneous stuff :D"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  ShowWordCount = true
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/soujanya-m-bhat"
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/notsoujanya"
+
+  [params.homeInfoParams]
+    Title = "notsoujanya"
+    Content = "writing about things that interest me in technology, science and other miscellaneous stuff :D"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

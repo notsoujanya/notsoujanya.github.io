@@ -1,0 +1,21 @@
+:root {
+  --theme: #bdd7de;
+  --entry: #ffffff;
+  --primary: #1a1a1a;
+  --secondary: #3a3a3a;
+  --tertiary: #d6eef9;
+  --content: #1f1f1f;
+  --code-bg: #eaf7fc;
+  --border: #4fb6e0;
+}
+
+body.dark {
+  --theme: #f6affd;
+  --entry: #0d1a1a;
+  --primary: #e8f5f5;
+  --secondary: #a8c4c4;
+  --tertiary: #1a2e2e;
+  --content: #d8eaea;
+  --code-bg: #0d1a1a;
+  --border: #1f3a3a;
+}
