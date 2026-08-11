@@ -20,7 +20,8 @@ it's going to have my opinions on things i usually read, things that i learn, on
 
 as we approach the end of my very brief but very long (infact) introduction, i want to say WELCOME, thank you for giving this a chance. and i hope you like what i write, my ideas, mostly that you enjoy the discourse and that it can become an interesting tidbit in your life which is also why though i'm bad at being consistent i'm going to try my hardest to be. 
 
-you can write to me [weirdspiderz@gmail.com](mailto:weirdspiderz@outlook.com) if you have topics you want me to research and cover or to just have a conversation to leave your opinion about what i've written. 
+you can write to me [weirdspiderz@outlook.com](mailto:weirdspiderz@outlook.com) if you have topics you want me to research and cover or to just have a conversation to leave your opinion about what i've written.
+
 
 okay that's all from me. until next time. 
 
