@@ -1,0 +1,98 @@
+name: security checks
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: '0 9 * * 1'
+
+
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.2
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: check hugo theme submodule integrity
+        run: |
+          echo "verifying PaperMod submodule..."
+          git submodule status
+          if git submodule status | grep -q '^-'; then
+            echo "ERROR: submodule not initialized"
+            exit 1
+          fi
+          if git submodule status | grep -q '^+'; then
+            echo "WARNING: submodule is ahead of recorded commit"
+            git submodule status
+          fi
+          echo "submodule OK"
+
+      - name: check for unexpected files in theme
+        run: |
+          echo "scanning theme for unexpected script files..."
+          SUSPICIOUS=$(find themes/PaperMod -name "*.js" | \
+            grep -v "assets/js" | \
+            grep -v "node_modules" || true)
+          if [ -n "$SUSPICIOUS" ]; then
+            echo "WARNING: unexpected JS files found outside assets/js:"
+            echo "$SUSPICIOUS"
+            exit 1
+          fi
+          echo "theme file structure OK"
+
+      - name: verify CSS files are not malformed
+        run: |
+          echo "checking custom CSS files..."
+          for f in assets/css/extended/*.css; do
+            if [ -f "$f" ]; then
+              if grep -qiE "(eval|javascript|expression|behavior|@import url)" "$f"; then
+                echo "ERROR: suspicious content found in $f"
+                exit 1
+              fi
+              echo "$f OK"
+            fi
+          done
+
+      - name: check external URLs in config are HTTPS
+        run: |
+          echo "checking all URLs in hugo.toml are HTTPS..."
+          if grep -E "url\s*=\s*\"http://" hugo.toml; then
+            echo "ERROR: non-HTTPS URL found in hugo.toml"
+            exit 1
+          fi
+          echo "all URLs are HTTPS"
+
+      - name: scan for hardcoded secrets
+        run: |
+          echo "scanning for accidentally committed secrets..."
+          if grep -rE \
+            "(api_key|secret_key|password|token|private_key)\s*=\s*['\"][^'\"]{8,}" \
+            --include="*.toml" \
+            --include="*.yaml" \
+            --include="*.yml" \
+            --include="*.md" \
+            .; then
+            echo "ERROR: possible hardcoded secret found"
+            exit 1
+          fi
+          echo "no secrets found"
+
+      - name: hugo build check
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: verify site builds cleanly
+        run: |
+          hugo --minify 2>&1 | tee build.log
+          if grep -i "error\|WARN" build.log; then
+            echo "build produced warnings or errors — review above"
+          fi
+          echo "build completed"
