@@ -1,14 +1,10 @@
-# Hugo build output — GitHub Actions builds this fresh on every deploy
+# hugo build output - built fresh on every run
 public/
 
-# Hugo's internal cache, generated automatically
+#hugo's internal cache, generated automatically
 resources/
-
-# Hugo's lock file, auto-generated
 .hugo_build.lock
-
-# Mac system file that appears in every folder automatically
 .DS_Store
 
-# Your personal writing reference — stays on your computer only
+#writing style reference guide
 WRITING_STYLE.md
