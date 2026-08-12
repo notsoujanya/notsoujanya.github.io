@@ -1,4 +1,4 @@
-# notsoujanya.github.io 
+# readme.md
 
 this repository holds the source for my technical blog that's hosted at [notsoujanya.github.io](https://notsoujanya.github.io). i cover all topics technology, science and other miscallaneous stuff. 
 
@@ -23,10 +23,10 @@ hello! this repository holds my source code for the technical blog i host using 
 
 | Tool | Purpose |
 |---|---|
-| [Hugo](https://gohugo.io) (extended) | Static site generator |
-| [PaperMod](https://github.com/adityatelange/hugo-PaperMod) | Theme |
-| [GitHub Pages](https://pages.github.com) | Hosting |
-| [GitHub Actions](https://github.com/features/actions) | Deploy + security pipeline |
+| [hugo](https://gohugo.io) (extended) | static site generator |
+| [papermod](https://github.com/adityatelange/hugo-PaperMod) | theme |
+| [gitHub pages](https://pages.github.com) | hosting |
+| [gitHub actions](https://github.com/features/actions) | deployment |
  
 ---
 
