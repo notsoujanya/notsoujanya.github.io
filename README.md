@@ -25,8 +25,8 @@ hello! this repository holds my source code for the technical blog i host using 
 |---|---|
 | [hugo](https://gohugo.io) (extended) | static site generator |
 | [papermod](https://github.com/adityatelange/hugo-PaperMod) | theme |
-| [gitHub pages](https://pages.github.com) | hosting |
-| [gitHub actions](https://github.com/features/actions) | deployment |
+| [github pages](https://pages.github.com) | hosting |
+| [github actions](https://github.com/features/actions) | deployment |
  
 ---
 
